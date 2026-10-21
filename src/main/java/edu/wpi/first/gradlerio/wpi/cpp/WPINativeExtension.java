@@ -11,6 +11,7 @@ import org.gradle.platform.base.VariantComponentSpec;
 
 import edu.wpi.first.gradlerio.simulation.NativeExternalSimulationTask;
 import edu.wpi.first.gradlerio.simulation.NativeSimulationTask;
+import edu.wpi.first.gradlerio.deploy.vmx.VmxHalSupport;
 import edu.wpi.first.gradlerio.wpi.WPIExtension;
 import edu.wpi.first.gradlerio.wpi.WPIVersionsExtension;
 import edu.wpi.first.nativeutils.NativeUtils;
@@ -103,6 +104,8 @@ public class WPINativeExtension {
 
         NativeUtilsExtension nte = project.getExtensions().getByType(NativeUtilsExtension.class);
         nte.withCrossRoboRIO();
+        // Studica VMX-pi runs linuxarm64 (optional: only used when the cross toolchain is available)
+        nte.withCrossLinuxArm64();
         nte.addWpiNativeUtils();
 
         deps = project.getObjects().newInstance(WPINativeDepsExtension.class, nte);
@@ -125,6 +128,7 @@ public class WPINativeExtension {
             wpiDeps.getImguiVersion().set(versions.getImguiVersion());
             wpiDeps.getWpimathVersion().set(versions.getWpimathVersion());
         });
+        VmxHalSupport.configureNativeHal(nte, versions.getVmxHalVersion());
 
         simulationTaskRelease = project.getTasks().register("simulateNativeRelease", NativeSimulationTask.class);
         simulationTaskDebug = project.getTasks().register("simulateNativeDebug", NativeSimulationTask.class);

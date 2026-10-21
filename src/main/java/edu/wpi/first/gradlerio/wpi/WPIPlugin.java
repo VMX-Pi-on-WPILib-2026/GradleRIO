@@ -14,6 +14,7 @@ import edu.wpi.first.deployutils.log.ETLoggerFactory;
 import edu.wpi.first.gradlerio.wpi.dependencies.WPIDependenciesPlugin;
 import edu.wpi.first.gradlerio.wpi.dependencies.tools.WPIToolsPlugin;
 import edu.wpi.first.nativeutils.UnzipTransform;
+import edu.wpi.first.gradlerio.deploy.vmx.VmxHalSupport;
 import edu.wpi.first.nativeutils.vendordeps.WPIVendorDepsExtension.VendorMavenRepo;
 
 public class WPIPlugin implements Plugin<Project> {
@@ -107,6 +108,9 @@ public class WPIPlugin implements Plugin<Project> {
                 cache.setAllowedGroupIds(vendorCacheIds);
             });
         }
+
+        // VMX HAL (edu.wpi.first.hal at wpi.versions.vmxHalVersion)
+        VmxHalSupport.addMavenRepository(project, wpi);
 
         if (wpi.getMaven().isUseLocal()) {
             project.getRepositories().maven(repo -> {

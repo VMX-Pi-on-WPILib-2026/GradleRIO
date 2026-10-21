@@ -49,7 +49,7 @@ public class WPIJavaDepsExtension {
         createJavaDependencies("edu.wpi.first.ntcore", "ntcore-java", versions.getWpilibVersion());
         createJavaDependencies("edu.wpi.first.cscore", "cscore-java", versions.getWpilibVersion());
         createJavaDependencies("edu.wpi.first.cameraserver", "cameraserver-java", versions.getWpilibVersion());
-        createJavaDependencies("edu.wpi.first.hal", "hal-java", versions.getWpilibVersion());
+        createJavaDependencies("edu.wpi.first.hal", "hal-java", versions.getVmxHalVersion());
         createJavaDependencies("edu.wpi.first.wpinet", "wpinet-java", versions.getWpilibVersion());
         createJavaDependencies("edu.wpi.first.wpiutil", "wpiutil-java", versions.getWpilibVersion());
         createJavaDependencies("edu.wpi.first.apriltag", "apriltag-java", versions.getWpilibVersion());
@@ -94,7 +94,7 @@ public class WPIJavaDepsExtension {
 
     private List<Provider<String>> getWpilibJniInternal(boolean debug, String platform) {
         return List.of(
-            createJniDependency("edu.wpi.first.hal", "hal-cpp", versions.getWpilibVersion(), debug, platform),
+            createJniDependency("edu.wpi.first.hal", "hal-cpp", versions.getVmxHalVersion(), debug, platform),
             createJniDependency("edu.wpi.first.wpimath", "wpimath-cpp", versions.getWpimathVersion(), debug, platform),
             createJniDependency("edu.wpi.first.ntcore", "ntcore-cpp", versions.getWpilibVersion(), debug, platform),
             createJniDependency("edu.wpi.first.cscore", "cscore-cpp", versions.getWpilibVersion(), debug, platform),

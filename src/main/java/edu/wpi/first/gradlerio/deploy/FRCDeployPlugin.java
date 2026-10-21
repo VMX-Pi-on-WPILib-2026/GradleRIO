@@ -17,6 +17,7 @@ import edu.wpi.first.gradlerio.deploy.roborio.FRCJavaArtifact;
 import edu.wpi.first.gradlerio.deploy.roborio.FRCNativeArtifact;
 import edu.wpi.first.gradlerio.deploy.roborio.FRCProgramStartArtifact;
 import edu.wpi.first.gradlerio.deploy.roborio.RoboRIO;
+import edu.wpi.first.gradlerio.deploy.vmx.VmxDeployRegistration;
 import edu.wpi.first.gradlerio.deploy.roborio.RobotCommandArtifact;
 import edu.wpi.first.deployutils.deploy.NamedObjectFactory;
 
@@ -59,6 +60,9 @@ public class FRCDeployPlugin implements Plugin<Project> {
             configureRoboRIOTypes(target);
             return target;
         });
+
+        // Register the Studica VMX-pi target
+        VmxDeployRegistration.register(project, deployExtension, frcExtension);
     }
 
     public Project getProject() {
