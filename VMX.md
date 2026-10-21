@@ -87,4 +87,7 @@ starts the service again.
   port 1741. The halsim parts are not needed:
   `./install.sh --user ubuntu --sudoers --skip-drivers --skip-plugin`.
   Its GPIO shim is needed on kernels without `/sys/class/gpio` (VMX interrupts).
+- `/home/lvuser`: on a real robot WPILib reads the deploy directory, `networktables.json`
+  and logs from there. Link it to the deploy user's home once:
+  `sudo ln -s /home/ubuntu /home/lvuser` (deploy warns when it is missing).
 - Java programs: `sudo apt install openjdk-17-jre-headless`.

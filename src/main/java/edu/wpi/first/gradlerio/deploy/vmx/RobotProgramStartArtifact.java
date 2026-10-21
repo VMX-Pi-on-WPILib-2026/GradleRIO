@@ -20,6 +20,12 @@ public class RobotProgramStartArtifact extends AbstractArtifact {
 
     @Override
     public void deploy(DeployContext ctx) {
+        // On a real robot WPILib uses /home/lvuser (deploy directory, NetworkTables and log files).
+        String lvuser = ctx.execute("[ -d /home/lvuser ] && echo present || echo missing").getResult();
+        if (lvuser != null && lvuser.contains("missing")) {
+            ctx.getLogger().log("WARNING: /home/lvuser does not exist on the robot. WPILib uses it on a real robot "
+                    + "(deploy directory, networktables.json, logs). Create it once: sudo ln -s " + vmx.getHomeDirectory() + " /home/lvuser");
+        }
         String service = vmx.getServiceName();
         ctx.execute("sudo systemctl enable " + service + " 2> /dev/null");
         ctx.execute("sudo systemctl start " + service + " 2> /dev/null");
