@@ -27,7 +27,7 @@ public abstract class WPIVersionsExtension {
     private static final String wpicalToolVersion = "2026.2.2";
     private static final String processstarterToolVersion = "2026.2.2";
     // HAL from the VMX HAL Maven repository (VMX-pi HAL on linuxarm64, upstream elsewhere)
-    private static final String vmxHalVersion = "2026.2.2-vmx.1";
+    private static final String vmxHalVersion = "2026.2.2-vmx.2";
 
 
     public abstract Property<String> getWpilibVersion();

@@ -22,7 +22,7 @@ same robot-side `robot_manager` service), minus the halsim extension it needs th
 ## The HAL: `wpi.versions.vmxHalVersion`
 
 `edu.wpi.first.hal` (C++ `hal_shared`/`hal_static`, Java `hal-java` and the JNI
-`hal-cpp`) resolves to `wpi.versions.vmxHalVersion` (default `2026.2.2-vmx.1`)
+`hal-cpp`) resolves to `wpi.versions.vmxHalVersion` (default `2026.2.2-vmx.2`)
 from the VMX HAL Maven repository, by default `~/wpilib/2026/vmx/maven`
 (`-PvmxHalMaven=/path` or `VMX_HAL_MAVEN` to change). Its `linuxarm64` binaries are
 the VMX-pi HAL; all other platforms are the upstream HAL, so desktop simulation and
@@ -30,7 +30,7 @@ roboRIO builds are unchanged. Build it with `vmx/build_vmx_hal_maven.py` in the 
 allwpilib fork. The plugin itself is published to the same folder:
 
 ```bash
-./gradlew publishToMavenLocal -PpublishVersion=2026.2.2-vmx.1 -Dmaven.repo.local=$HOME/wpilib/2026/vmx/maven
+./gradlew publishToMavenLocal -PpublishVersion=2026.2.2-vmx.2 -Dmaven.repo.local=$HOME/wpilib/2026/vmx/maven
 ```
 
 `libvmxpi_hal_cpp.so` (Studica's) is never downloaded or redistributed: C++ links with
